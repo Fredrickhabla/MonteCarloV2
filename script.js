@@ -49,20 +49,32 @@ function updateIterationTable() {
         rniMapping.push({ start: startRNI, end: endRNI, customers: customers });
     }
 
-    // update the # of Customers 
+    // Update the # of Customers in the Iteration Table
+    let totalCustomers = 0;
+    let rowCount = 0;
+
     for (let row of iterationTable.rows) {
         let randomNumberInput = row.cells[1].querySelector("input");
         if (randomNumberInput && randomNumberInput.value !== "") {
             let rni = parseInt(randomNumberInput.value);
             for (let entry of rniMapping) {
                 if (rni >= entry.start && rni <= entry.end) {
-                    row.cells[2].textContent = entry.customers;
+                    let customers = entry.customers;
+                    row.cells[2].textContent = customers;
+                    totalCustomers += customers;
+                    rowCount++;
                     break;
                 }
             }
         }
     }
+
+    // Calculate and display the average number of customers
+    let averageCustomers = rowCount > 0 ? (totalCustomers / rowCount).toFixed(2) : 0;
+    document.getElementById("averageCustomers").textContent = averageCustomers;
 }
+
+
 
 // auto-fill random numbers in the table
 function autoFillRandomNumbers() {

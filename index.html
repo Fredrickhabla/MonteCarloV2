@@ -12,7 +12,7 @@
     <h1>Monte Carlo Simulation</h1>
 
     <div class="table-container">
-        <!-- Probability Table -->
+    
         <table id="probabilityTable">
             <thead>
                 <tr>
@@ -37,7 +37,6 @@
             </tbody>
         </table>
 
-        <!-- Iteration Table -->
         <table id="iterationTable">
             <thead>
                 <tr>
@@ -48,10 +47,16 @@
             </thead>
             <tbody>
             </tbody>
+            <tfoot>
+                <tr class="average-row">
+                    <td colspan="2">Average # of Customers</td>
+                    <td id="averageCustomers">0</td>
+                </tr>
+            </tfoot>
         </table>
     </div>
 
-    <button onclick="addRow()">Add Iteration</button>
+    <button onclick="addRow()">Add Row</button>
     <button class="delete-button" onclick="deleteSelectedRow()">Delete Selected Row</button>
     <button class="save-button" onclick="saveChanges()">Save Changes</button>
     <button class="auto-fill-button" onclick="autoFillRandomNumbers()">Auto Fill Random Numbers</button>
